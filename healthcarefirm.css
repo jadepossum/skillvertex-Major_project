@@ -1,6 +1,7 @@
 *{
     margin:0px;
     padding:0px;
+    box-sizing: border-box;
     font-family: sans-serif;
 }
 html{
@@ -21,7 +22,7 @@ body{
     background-color: lightgoldenrodyellow;
 }
 .aboutinfo{
-    width: 100%;
+    width: 100vw;
     height: 100%;
 }
 .outercontainer{
@@ -36,7 +37,7 @@ body{
     align-items: center;
 }
 .container-one{
-    width: 100%;
+    width: 100vw;
     max-width: 1200px;
     height: 500px;
     flex-shrink: 0;
@@ -58,7 +59,7 @@ body{
     /* object-fit: contain; */
 }
 .container-two{
-    width: 100%;
+    width: 100vw;
     height: 500px;
     position: absolute;
     transform:translate( 0px,500px);
@@ -67,26 +68,47 @@ body{
     opacity: 0;
     transition-duration:1s;
     transition-property: opacity transform height;
-    overflow: auto;
+    
 }
 .btn-container{
     position: absolute;
     top:0px;
     height: 50px;
-    width: 100%;
-    padding:1rem;
+    width: 100vw;
+}
+.addhospital{
+    color: white;
+    width: 5rem;
+    position: absolute;
+    top:1rem;
+    right: 1rem;
+    height: 3rem;
+    background-color: rgb(29, 81, 51);
+    border:0px;
+    border-radius: 10px;
+}
+.backtohome{
+    color: white;
+    width: 5rem;
+    position: absolute;
+    top:1rem;
+    left: 1rem;
+    height: 3rem;
+    background-color: rgb(29, 81, 51);
+    border:0px;
+    border-radius: 10px;
 }
 .hospital-card-container{
-    width: 100%;
+    width: 100vw;
     height: 100vh;
-    padding-block:5rem;
+    padding-block:4rem;
     display: flex;
     flex-direction: column;
     gap:2rem;
     overflow: scroll;
     position: absolute;
     top:0;
-    /* background-color: red; */
+    overflow: auto;
 }
 .hospitalcard{
     color: black;
@@ -108,8 +130,13 @@ body{
 .hdetails > *{
     text-align: center;
 }
+.hname{
+    padding:1rem;
+    font-size: 4.5rem;
+    font-weight: 600;
+}
 .hospital-form-container{
-    width:100%;
+    width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
@@ -124,7 +151,7 @@ body{
 }
 .blur{
     position: absolute;
-    width: 100%;
+    width: 100vw;
     height: 100%;
     /* z-index: 2; */
     background-color: rgb(53, 94, 94);
@@ -149,28 +176,11 @@ body{
     display: flex;
     justify-content: space-between;
 }
-.addhospital{
-    color: white;
-    width: 5rem;
-    position: absolute;
-    right: 1rem;
-    height: 3rem;
-    background-color: rgb(29, 81, 51);
-    border:0px;
-    border-radius: 10px;
-}
-.backtohome{
-    color: white;
-    width: 5rem;
-    height: 3rem;
-    background-color: rgb(29, 81, 51);
-    border:0px;
-    border-radius: 10px;
-}
+
 .enlargedcard{
     background-color: rgb(114, 165, 145);
     transform:translate( 0px,0px);
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     opacity:1;
     visibility: visible;

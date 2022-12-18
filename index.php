@@ -26,10 +26,7 @@
         <img src="./img/hospital.png" alt="image not found">
         </div>
         <div class="container-two">
-            <div class="btn-container">
-                <button onclick="newhospital()" class="addhospital">Add</button>
-                <button onclick="test()" class="backtohome">Back</button>
-            </div>
+            
             <div class="hospital-card-container">
                 <?php
                     $sql = "select * from hospitals";
@@ -83,7 +80,10 @@
                     </form>
                 </div>
             </div>
-            
+            <div class="btn-container">
+                <button onclick="newhospital()" class="addhospital">Add</button>
+                <button onclick="test()" class="backtohome">Back</button>
+            </div>
             
         </div>
     </div>
