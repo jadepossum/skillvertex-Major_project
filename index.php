@@ -1,3 +1,15 @@
+<?php
+    session_start();
+    require_once "configure.php";
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        // echo $_POST['hospitalname']."<br>";
+        // echo $_POST['hospitaldescription']."<br>";
+        // echo $_POST['hospitaladdress'];
+        // echo $_SERVER['PHP_SELF'];
+        
+    }
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,14 +26,43 @@
         <img src="./img/hospital.png" alt="image not found">
         </div>
         <div class="container-two">
+            <div class="btn-container">
+                <button onclick="newhospital()" class="addhospital">Add</button>
+                <button onclick="test()" class="backtohome">Back</button>
+            </div>
             <div class="hospital-card-container">
-                <div class="hospitalcard">hospital1</div>
+                <?php
+                    $sql = "select * from hospitals";
+                    $stmt = mysqli_query($conn,$sql);
+                    while($row = mysqli_fetch_assoc($stmt)){
+                        echo '<div class="hospitalcard">
+                        <img width="300px" src="data:image;base64,'.base64_encode($row['image']).'" alt="">
+                                <div class="hdetails">
+                                    <p class="hname">'.$row['name'].'</p>
+                                    <p class="hdescription">'.$row['description'].'</p>
+                                    <p class="haddress">'.$row['Address'].'</p>
+                                </div>
+                            </div>';
+                        // echo $row['id']."<br>";
+                        // echo $row['name']."<br>";
+                        // echo $row['description']."<br>";
+                        // echo $row['Address']."<br>";
+                        //  echo   '<img width="300px" src="data:image;base64,'.base64_encode($row['image']).'" alt="">';
+                    }
+                ?>
+                <!-- <div class="hospitalcard">
+                    <div class="hdetails">
+                        <p class="hname"></p>
+                        <p class="hdescription"></p>
+                        <p class="haddress"></p>
+                    </div>
+                </div> -->
             </div>
             <div class="hospital-form-container hide">
                 <div class="blur"></div>
                 <div class="hospital-form">
                     <button onclick="closehospitalform()" class="closeHform">close</button>
-                    <form action="" method="post">
+                    <form action="index.php" method="post">
                         <div>
                             <label for="hospitalname">Hospital Name :</label>
                             <input type="text" name="hospitalname">
@@ -42,7 +83,8 @@
                     </form>
                 </div>
             </div>
-            <button onclick="newhospital()" class="addhospital">Add</button>
+            
+            
         </div>
     </div>
     <div class="reports outercontainer">

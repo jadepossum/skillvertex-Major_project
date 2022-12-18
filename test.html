@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="healthcarefirm.css">
 </head>
 <body>
+    <!-- <div class="aboutinfo">
+        aboutinfo
+    </div> -->
     <div class="hospitals outercontainer">
         <div class="container-one">
             <a onclick="test()" href="#">Our Hospitals</a>
@@ -21,7 +24,7 @@
                 <div class="blur"></div>
                 <div class="hospital-form">
                     <button onclick="closehospitalform()" class="closeHform">close</button>
-                    <form action="" method="post">
+                    <form action="uploadnewhospital.php" method="post">
                         <div>
                             <label for="hospitalname">Hospital Name :</label>
                             <input type="text" name="hospitalname">
@@ -43,6 +46,7 @@
                 </div>
             </div>
             <button onclick="newhospital()" class="addhospital">Add</button>
+            <button onclick="test()" class="backtohome">Back</button>
         </div>
     </div>
     <div class="reports outercontainer">
