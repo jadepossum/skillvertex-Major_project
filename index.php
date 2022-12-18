@@ -5,38 +5,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>healthcare firm</title>
-    <style>
-        *{
-            margin:0px;
-            padding:0px;
-        }
-        body{
-            
-        }
-        .hospitals{
-            color:lightblue;
-            background-color:lightcoral;
-            position:relative;
-            width:100%;
-            height:500px;
-            font-size:3rem;
-            display:flex;
-        }
-        .hospitals > img{
-            width:400px;
-            background-color:blue;
-        }
-    </style>
+    <link rel="stylesheet" href="healthcarefirm.css">
 </head>
 <body>
-    <div class="hospitals">
-        <a href="#">our hospitals</a>
-        <img src="./img/hospital.png" width="400px" alt="image not found">
+    <div class="hospitals outercontainer">
+        <div class="container-one">
+            <a onclick="test()" href="#">Our Hospitals</a>
+        <img src="./img/hospital.png" alt="image not found">
+        </div>
+        <div class="container-two">
+            <div class="hospital-card-container">
+                <div class="hospitalcard">hospital1</div>
+            </div>
+            <div class="hospital-form-container hide">
+                <div class="blur"></div>
+                <div class="hospital-form">
+                    <button onclick="closehospitalform()" class="closeHform">close</button>
+                    <form action="" method="post">
+                        <div>
+                            <label for="hospitalname">Hospital Name :</label>
+                            <input type="text" name="hospitalname">
+                        </div>
+                        <div>
+                            <label for="hospitaldescription">About Hospital :</label>
+                            <input type="textbox" name="hospitaldescription">
+                        </div>
+                        <div>
+                            <label for="hospitaladdress">Address :</label>
+                            <input type="text" name="hospitaladdress">
+                        </div>
+                        <div>
+                            <label for="Hospital image">Choose an image :</label>
+                            <input type="file" name="hospitalimage">
+                        </div>
+                        <input type="submit" name="upload" id="">
+                    </form>
+                </div>
+            </div>
+            <button onclick="newhospital()" class="addhospital">Add</button>
+        </div>
     </div>
-    <div class="instantQuotes"></div>
-    <div class="reports">
-        <img src="./img/reports.png" width="400px" alt="not found">
+    <div class="reports outercontainer">
+        <div class="container-one">
+            <a onclick="test()" href="#">Reports & Assessments</a>
+            <img src="./img/reports.png" width="400px" alt="not found">
+        </div>
+        <div class="container-two">
+            <div class="hospitalcard">hospital1</div>
+        </div>
     </div>
-    <div class="payments"></div>
+    <script src="./healthcarefirm.js"></script>
 </body>
 </html>
