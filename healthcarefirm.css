@@ -101,7 +101,7 @@ body{
 .hospital-card-container{
     width: 100vw;
     height: 100vh;
-    padding-block:4rem;
+    padding-block:5rem;
     display: flex;
     flex-direction: column;
     gap:2rem;
@@ -127,12 +127,29 @@ body{
     object-fit: cover;
     object-position: center center;
 }
+.hdetails{
+    flex:1;
+    padding-inline:1rem;
+}
 .hdetails > *{
     text-align: center;
 }
 .hname{
     padding:1rem;
     font-size: 4.5rem;
+    font-weight: 600;
+    color: rgb(95, 240, 192);
+}
+.haddress{
+    text-align: right;
+}
+.hdescription{
+    padding:1rem .5rem;
+    border-radius: 20px;
+    height: 230px;
+    margin-top:1rem;
+    background-color: rgb(223, 223, 154);
+    text-align: left;
     font-weight: 600;
 }
 .hospital-form-container{

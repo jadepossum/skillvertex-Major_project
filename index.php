@@ -36,8 +36,8 @@
                         <img width="300px" src="data:image;base64,'.base64_encode($row['image']).'" alt="">
                                 <div class="hdetails">
                                     <p class="hname">'.$row['name'].'</p>
-                                    <p class="hdescription">'.$row['description'].'</p>
                                     <p class="haddress">'.$row['Address'].'</p>
+                                    <p class="hdescription">'.$row['description'].'</p>
                                 </div>
                             </div>';
                         // echo $row['id']."<br>";
