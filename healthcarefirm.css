@@ -166,21 +166,12 @@ body{
     position: absolute;
     top:0;
 }
-.blur{
-    position: absolute;
-    width: 100vw;
-    height: 100%;
-    /* z-index: 2; */
-    background-color: rgb(53, 94, 94);
-    filter: blur(100px);
-}
 .hospital-form{
     position: absolute;
     color: black;
    background-color: lightblue;
    padding: 3rem;
    border-radius: 25px;
-   /* z-index: 3; */
    width: min(80%,500px);
 }
 .hospital-form > form {
