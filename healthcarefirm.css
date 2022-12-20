@@ -124,6 +124,7 @@ body{
 }
 .hospitalcard > img{
     width: 300px;
+    flex-shrink: 0;
     object-fit: cover;
     object-position: center center;
 }
@@ -142,6 +143,8 @@ body{
 }
 .haddress{
     text-align: right;
+    height: 1rem;
+    overflow: auto;
 }
 .hdescription{
     padding:1rem .5rem;

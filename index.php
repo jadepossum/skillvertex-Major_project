@@ -1,5 +1,5 @@
 <?php
-    session_start();
+session_start();
     require_once "configure.php";
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         // echo $_POST['hospitalname']."<br>";
@@ -33,7 +33,7 @@
                     $stmt = mysqli_query($conn,$sql);
                     while($row = mysqli_fetch_assoc($stmt)){
                         echo '<div class="hospitalcard">
-                        <img width="300px" src="data:image;base64,'.base64_encode($row['image']).'" alt="">
+                        <img alt="image not found" width="300px" src="data:image;base64,'.base64_encode($row['image']).'" alt="">
                                 <div class="hdetails">
                                     <p class="hname">'.$row['name'].'</p>
                                     <p class="haddress">'.$row['Address'].'</p>
@@ -47,19 +47,12 @@
                         //  echo   '<img width="300px" src="data:image;base64,'.base64_encode($row['image']).'" alt="">';
                     }
                 ?>
-                <!-- <div class="hospitalcard">
-                    <div class="hdetails">
-                        <p class="hname"></p>
-                        <p class="hdescription"></p>
-                        <p class="haddress"></p>
-                    </div>
-                </div> -->
             </div>
             <div class="hospital-form-container hide">
                 <div class="blur"></div>
                 <div class="hospital-form">
                     <button onclick="closehospitalform()" class="closeHform">close</button>
-                    <form action="index.php" method="post">
+                    <form action="uploadnewhospital.php" method="post" enctype="multipart/form-data">
                         <div>
                             <label for="hospitalname">Hospital Name :</label>
                             <input type="text" name="hospitalname">
@@ -73,8 +66,8 @@
                             <input type="text" name="hospitaladdress">
                         </div>
                         <div>
-                            <label for="Hospital image">Choose an image :</label>
-                            <input type="file" name="hospitalimage">
+                            <label for="hospitalimage">Choose an image :</label>
+                            <input type="file" name="hospitalimage" accept="image/jpg,image/jpeg,image/png">
                         </div>
                         <input type="submit" name="upload" id="">
                     </form>

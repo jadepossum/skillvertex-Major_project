@@ -1,23 +1,19 @@
 <?php
     require_once "configure.php";
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        echo $_POST['hospitalname']."<br>";
-        echo $_POST['hospitaldescription']."<br>";
-        echo $_POST['hospitaladdress'];
-        echo $_SERVER['PHP_SELF'];
-        $sql = "select * from hospitals";
-        $stmt = mysqli_query($conn,$sql);
-        while($row = mysqli_fetch_assoc($stmt)){
-            echo $row['id']."<br>";
-            echo $row['name']."<br>";
-            echo $row['description']."<br>";
-            echo $row['Address']."<br>";
-             echo   '<img width="300px" src="data:image;base64,'.base64_encode($row['image']).'" alt="">';
-        }
-        
-    }
-    else{
-    echo "notfound";
+    if(isset($_POST['upload'])){
+            echo "<pre>";
+            print_r($_FILES['hospitalimage']);
+            echo "</pre>";
+
+            $file = addslashes(file_get_contents($_FILES['hospitalimage']['tmp_name']));
+        $hname = $_POST['hospitalname'];
+        $hdesc = $_POST['hospitaldescription'];
+        $hadd = $_POST['hospitaladdress'];
+        echo $hname;
+        echo $hdesc;
+        $sql = "insert into hospitals(name,description,Address,image) values('$hname','$hdesc','$hadd','$file')";
+        mysqli_query($conn,$sql);
+        mysqli_close($conn);
     }
 ?>
 <!DOCTYPE html>
@@ -26,11 +22,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>healthcare firm</title>
+    <link rel="stylesheet" href="healthcarefirm.css">
 </head>
 <body>
-    <script>
-        location.href="index.php";
-    </script>
+    <div class="hospitals outercontainer">
+        <div class="container-one">
+            <a onclick="test()" href="#">Our Hospitals</a>
+        <img src="./img/hospital.png" alt="image not found">
+        </div>
+    </div>
+    <div class="reports outercontainer">
+        <div class="container-one">
+            <a onclick="test()" href="#">Reports & Assessments</a>
+            <img src="./img/reports.png" width="400px" alt="not found">
+        </div>
+        <div class="container-two">
+            <div class="hospitalcard">hospital1</div>
+        </div>
+    </div>
+    <script src="./healthcarefirm.js"></script>
 </body>
 </html>
