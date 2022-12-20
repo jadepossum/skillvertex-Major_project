@@ -8,45 +8,46 @@
     <link rel="stylesheet" href="healthcarefirm.css">
 </head>
 <body>
-    <!-- <div class="aboutinfo">
-        aboutinfo
-    </div> -->
     <div class="hospitals outercontainer">
         <div class="container-one">
             <a onclick="test()" href="#">Our Hospitals</a>
         <img src="./img/hospital.png" alt="image not found">
         </div>
         <div class="container-two">
+            
             <div class="hospital-card-container">
-                <div class="hospitalcard">hospital1</div>
+               
             </div>
             <div class="hospital-form-container hide">
                 <div class="blur"></div>
                 <div class="hospital-form">
                     <button onclick="closehospitalform()" class="closeHform">close</button>
-                    <form action="uploadnewhospital.php" method="post">
+                    <form action="uploadnewhospital.php" method="post" enctype="multipart/form-data">
                         <div>
                             <label for="hospitalname">Hospital Name :</label>
-                            <input type="text" name="hospitalname">
+                            <input type="text" name="hospitalname" required>
                         </div>
                         <div>
                             <label for="hospitaldescription">About Hospital :</label>
-                            <input type="textbox" name="hospitaldescription">
+                            <input type="textbox" name="hospitaldescription" required>
                         </div>
                         <div>
                             <label for="hospitaladdress">Address :</label>
-                            <input type="text" name="hospitaladdress">
+                            <input type="text" name="hospitaladdress" required>
                         </div>
                         <div>
-                            <label for="Hospital image">Choose an image :</label>
-                            <input type="file" name="hospitalimage">
+                            <label for="hospitalimage">Choose an image :</label>
+                            <input type="file" name="hospitalimage" accept="image/jpg,image/jpeg,image/png" required>
                         </div>
                         <input type="submit" name="upload" id="">
                     </form>
                 </div>
             </div>
-            <button onclick="newhospital()" class="addhospital">Add</button>
-            <button onclick="test()" class="backtohome">Back</button>
+            <div class="btn-container">
+                <button onclick="newhospital()" class="addhospital">Add</button>
+                <button onclick="test()" class="backtohome">Back</button>
+            </div>
+            
         </div>
     </div>
     <div class="reports outercontainer">
@@ -58,6 +59,6 @@
             <div class="hospitalcard">hospital1</div>
         </div>
     </div>
-    <script src="./healthcarefirm.js"></script>
+    <script src="healthcarefirm.js"> </script>
 </body>
 </html>

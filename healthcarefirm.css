@@ -121,6 +121,7 @@ body{
     background-color: lightgoldenrodyellow;
     font-size: 1rem;
     overflow: hidden;
+    position: relative;
 }
 .hospitalcard > img{
     width: 300px;
@@ -154,6 +155,20 @@ body{
     background-color: rgb(223, 223, 154);
     text-align: left;
     font-weight: 600;
+}
+.hospital-services-btn{
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    font-weight: 600;
+    border: 0px;
+    border-radius: 20px;
+    padding:.5rem 1rem;
+}
+.hospital-services-btn:hover{
+    cursor: pointer;
+    color: white;
+    background-color: black;
 }
 .hospital-form-container{
     width: 100%;

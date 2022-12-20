@@ -1,19 +1,19 @@
 <?php
     require_once "configure.php";
     if(isset($_POST['upload'])){
-            echo "<pre>";
-            print_r($_FILES['hospitalimage']);
-            echo "</pre>";
+            // echo "<pre>";
+            // print_r($_FILES['hospitalimage']);
+            // echo "</pre>";
 
             $file = addslashes(file_get_contents($_FILES['hospitalimage']['tmp_name']));
         $hname = $_POST['hospitalname'];
         $hdesc = $_POST['hospitaldescription'];
         $hadd = $_POST['hospitaladdress'];
-        echo $hname;
-        echo $hdesc;
+        // echo $hname;
+        // echo $hdesc;
         $sql = "insert into hospitals(name,description,Address,image) values('$hname','$hdesc','$hadd','$file')";
         mysqli_query($conn,$sql);
-        mysqli_close($conn);
+        // mysqli_close($conn);
     }
 ?>
 <!DOCTYPE html>
@@ -41,6 +41,8 @@
             <div class="hospitalcard">hospital1</div>
         </div>
     </div>
-    <script src="./healthcarefirm.js"></script>
+    <script >
+        location.href = "index.php";
+    </script>
 </body>
 </html>
