@@ -68,13 +68,31 @@ body{
     opacity: 0;
     transition-duration:1s;
     transition-property: opacity transform height;
-    
 }
 .btn-container{
     position: absolute;
     top:0px;
-    height: 50px;
+    height: 80px;
     width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-container > button{
+    transition-duration: .5s;;
+    transition-property: color;
+}
+.btn-container > ul{
+    display: none;
+    gap:2rem;
+    background-color: transparent;
+}
+.btn-container li{
+    list-style: none;
+    font-weight: 600;
+    background-color: black;
+    padding: .5rem 1rem;
+    border-radius: 20px;
 }
 .addhospital{
     color: white;
@@ -97,6 +115,18 @@ body{
     background-color: rgb(29, 81, 51);
     border:0px;
     border-radius: 10px;
+}
+.hospital-services-container{
+    width: 100vw;
+    height: 100vh;
+    padding-block:5rem;
+    background-color: red;
+    opacity: 0;
+    transition-duration:1s;
+    transition-property: opacity;
+    visibility: hidden;
+    position: absolute;
+    /* z-index: 5; */
 }
 .hospital-card-container{
     width: 100vw;
@@ -222,4 +252,8 @@ body{
 .hide{
     opacity: 0;
     visibility: hidden;
+}
+.unhide{
+    opacity: 1;
+    visibility: visible;
 }

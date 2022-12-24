@@ -51,6 +51,9 @@ session_start();
                     }
                 ?>
             </div>
+            <div class="hospital-services-container">
+                welcome
+            </div>
             <div class="hospital-form-container hide">
                 <div class="blur"></div>
                 <div class="hospital-form">
@@ -79,7 +82,12 @@ session_start();
             </div>
             <div class="btn-container">
                 <button onclick="newhospital()" class="addhospital">Add</button>
-                <button onclick="test()" class="backtohome">Back</button>
+                <ul>
+                    <li><a href="#">Photo Gallery</a></li>
+                    <li><a href="#">Price list</a></li>
+                    <li><a href="#">instant quote</a></li>
+                </ul>
+                <button onclick="prevpage()" class="backtohome">Back</button>
             </div>
             
         </div>
