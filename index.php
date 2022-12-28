@@ -55,13 +55,17 @@ session_start();
                 ?>  
             </div>
             <div class="hospital-services-container">
-                <?php
-                    $sql = "select hospitalpics from hospitalimgs";
-                    $stmt = mysqli_query($conn,$sql);
-                    while($row = mysqli_fetch_assoc($stmt)){
-                        echo '<img width="200px" alt="image not found" src="data:image;base64,'.base64_encode($row['hospitalpics']).'" >';
-                    }
-                ?>
+                <div class="photo-container">
+                    <?php
+                        $sql = "select hospitalpics from hospitalimgs";
+                        $stmt = mysqli_query($conn,$sql);
+                        while($row = mysqli_fetch_assoc($stmt)){
+                            echo '<img class="hospitalpics" width="200px" alt="image not found" src="data:image;base64,'.base64_encode($row['hospitalpics']).'" >';
+                        }
+                    ?>
+                </div>
+                <div class="price-container"></div>
+                <div class="quote-container"></div>
             </div>
             <div class="hospital-form-container hide">
                 <div class="blur"></div>
