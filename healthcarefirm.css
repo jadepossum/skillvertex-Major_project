@@ -79,8 +79,14 @@ body{
     justify-content: center;
 }
 .btn-container > button{
-    transition-duration: .5s;;
+    color: white;
+    background-color: rgb(29, 81, 51);
+    position: absolute;
+    transition-duration: .5s;
     transition-property: color;
+    padding: .75rem 1.5rem;
+    border:0px;
+    border-radius: 20px;
 }
 .btn-container > ul{
     display: none;
@@ -94,39 +100,44 @@ body{
     padding: .5rem 1rem;
     border-radius: 20px;
 }
+.inner-btns > li:hover{
+    cursor: pointer;
+}
 .addhospital{
-    color: white;
-    width: 5rem;
-    position: absolute;
+    
     top:1rem;
     right: 1rem;
-    height: 3rem;
-    background-color: rgb(29, 81, 51);
-    border:0px;
-    border-radius: 10px;
+    
+    
 }
 .backtohome{
-    color: white;
-    width: 5rem;
-    position: absolute;
+    
     top:1rem;
     left: 1rem;
-    height: 3rem;
-    background-color: rgb(29, 81, 51);
-    border:0px;
-    border-radius: 10px;
+    
 }
 .hospital-services-container{
     width: 100vw;
     height: 100vh;
-    padding-block:5rem;
-    background-color: red;
+    padding:5rem;
+    background-color: rgb(220, 180, 180);
     opacity: 0;
     transition-duration:1s;
     transition-property: opacity;
     visibility: hidden;
     position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    overflow: auto;
+   
     /* z-index: 5; */
+}
+.hospitalpics{
+    border-radius: 20px;
+    border:4px solid black;
 }
 .hospital-card-container{
     width: 100vw;
@@ -185,6 +196,9 @@ body{
     background-color: rgb(223, 223, 154);
     text-align: left;
     font-weight: 600;
+}
+.hid{
+    display: none;
 }
 .hospital-services-btn{
     position: absolute;
@@ -256,4 +270,9 @@ body{
 .unhide{
     opacity: 1;
     visibility: visible;
+}
+.btn-selected{
+    border: 4px solid white;
+    color: black;
+    background-color: white;
 }
