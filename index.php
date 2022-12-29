@@ -29,7 +29,19 @@ session_start();
         <img src="./img/hospital.png" alt="image not found">
         </div>
         <div class="container-two">
-            
+        <div class="hospital-services-container">
+                <div class="photo-container inner-service-container unhide">
+                    <?php
+                        $sql = "select hospitalpics from hospitalimgs";
+                        $stmt = mysqli_query($conn,$sql);
+                        while($row = mysqli_fetch_assoc($stmt)){
+                            echo '<img class="hospitalpics" width="200px" alt="image not found" src="data:image;base64,'.base64_encode($row['hospitalpics']).'" >';
+                        }
+                    ?>
+                </div>
+                <div class="price-container inner-service-container unhide"></div>
+                <div class="quote-container inner-service-container"></div>
+            </div>
             <div class="hospital-card-container">
                 <?php
                     $sql = "select * from hospitals";
@@ -54,19 +66,7 @@ session_start();
                     }
                 ?>  
             </div>
-            <div class="hospital-services-container">
-                <div class="photo-container">
-                    <?php
-                        $sql = "select hospitalpics from hospitalimgs";
-                        $stmt = mysqli_query($conn,$sql);
-                        while($row = mysqli_fetch_assoc($stmt)){
-                            echo '<img class="hospitalpics" width="200px" alt="image not found" src="data:image;base64,'.base64_encode($row['hospitalpics']).'" >';
-                        }
-                    ?>
-                </div>
-                <div class="price-container"></div>
-                <div class="quote-container"></div>
-            </div>
+            
             <div class="hospital-form-container hide">
                 <div class="blur"></div>
                 <div class="hospital-form">
@@ -104,7 +104,7 @@ session_start();
             <div class="btn-container">
                 <button onclick="newhospital()" class="addhospital">Add</button>
                 <ul class="inner-btns">
-                    <li class="photo"><span>Photo Gallery</span></li>
+                    <li class="photo btn-selected"><span>Photo Gallery</span></li>
                     <li class="price"><span>Price List</span></li>
                     <li class="quote"><span>Instant Quote</span></li>
                 </ul>

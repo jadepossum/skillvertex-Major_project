@@ -94,6 +94,11 @@ body{
     background-color: transparent;
 }
 .btn-container li{
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: content-box;
     list-style: none;
     font-weight: 600;
     background-color: black;
@@ -104,11 +109,8 @@ body{
     cursor: pointer;
 }
 .addhospital{
-    
     top:1rem;
     right: 1rem;
-    
-    
 }
 .backtohome{
     
@@ -119,21 +121,44 @@ body{
 .hospital-services-container{
     width: 100vw;
     height: 100vh;
-    padding:5rem;
     background-color: rgb(220, 180, 180);
     opacity: 0;
     transition-duration:1s;
     transition-property: opacity;
     visibility: hidden;
     position: absolute;
+    overflow: auto;
+    /* z-index: 5; */
+}
+.inner-service-container{
+    color: black;
+    position:absolute;
+    background-color: lightcyan;
+    box-sizing: content-box;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 2rem;
     overflow: auto;
-   
-    /* z-index: 5; */
+    height: 100vh;
+    width: 100vw;
+    padding-top: 5rem;
+    opacity: 0;
+    transition-duration:1s;
+    transition-property: opacity;
+    visibility: none;
+}
+.inner-service-container > table{
+    min-width: 500px;
+    table-layout: auto;
+    text-align: center;
+    border: 3px solid black;
+}
+.inner-service-container th,td{
+    border: 3px solid black;
+    padding: 1rem 1rem;
+    background-color: lightcoral;
 }
 .hospitalpics{
     border-radius: 20px;
@@ -265,14 +290,14 @@ body{
 }
 .hide{
     opacity: 0;
-    visibility: hidden;
+    display: none;
 }
 .unhide{
     opacity: 1;
     visibility: visible;
 }
 .btn-selected{
-    border: 4px solid white;
+    border: 4px solid black;
     color: black;
-    background-color: white;
+    background-color: lightcoral;
 }

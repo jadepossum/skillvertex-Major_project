@@ -63,6 +63,7 @@ function closehospitalform(){
 
 servicesbtn.forEach(element => {
     element.addEventListener('click',(ev)=>{
+        hospitalcardcntr.style.display='none';
         containerbtns.forEach(btn=>{
             console.log(btn);
             btn.style.background = 'lightcoral';
@@ -70,30 +71,40 @@ servicesbtn.forEach(element => {
         document.querySelector('.btn-container > ul').style.display='flex';
         console.log(serviecescontainer);
         serviecescontainer.classList.toggle('unhide');
-        console.log(ev.target.parentElement.firstElementChild);
-        node = ev.target.parentElement.firstElementChild.cloneNode();
-        // ev.target.parentElement.parentElement.style.visibility="hidden";
-        // console.log(node);
-        
         var str = ev.target.parentElement.lastElementChild.innerHTML;
         showhospitalpics(str);
-        
+        showhospitalpricelist(str);
     })
     // console.log(element);
 });
 
 function showhospitalpics(str) {
     if (str.length == 0) {
-        document.querySelector(".hospital-services-container").innerHTML = "";
+        document.querySelector(".photo-container").innerHTML = "";
         return;
     } else {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                document.querySelector(".hospital-services-container").innerHTML = this.responseText;
+                document.querySelector(".photo-container").innerHTML = this.responseText;
             }
         };
         xmlhttp.open("POST", "showhospitalpics.php?q=" + str, true);
+        xmlhttp.send();
+    }
+}
+function showhospitalpricelist(str) {
+    if (str.length == 0) {
+        document.querySelector(".price-container").innerHTML = "";
+        return;
+    } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.querySelector(".price-container").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("POST", "showhospitalprice.php?r=" + str, true);
         xmlhttp.send();
     }
 }
