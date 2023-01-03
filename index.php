@@ -30,7 +30,7 @@ session_start();
         </div>
         <div class="container-two">
         <div class="hospital-services-container">
-                <div class="photo-container inner-service-container unhide">
+                <div class="photo inner-service-container unhide">
                     <?php
                         $sql = "select hospitalpics from hospitalimgs";
                         $stmt = mysqli_query($conn,$sql);
@@ -39,8 +39,21 @@ session_start();
                         }
                     ?>
                 </div>
-                <div class="price-container inner-service-container unhide"></div>
-                <div class="quote-container inner-service-container"></div>
+                <div class="price inner-service-container"></div>
+                <div class="quote inner-service-container">
+                    <div class="quote-card-container">
+                        <!-- <div class="quote-card">
+                            <input type="checkbox">
+                            <div class="service-name">service 1</div>
+                            <div class="service-price">500</div>
+                        </div>
+                        <div class="quote-card">
+                            <input type="checkbox">
+                            <div class="service-name">service 2</div>
+                            <div class="service-price">400</div>
+                        </div> -->
+                    </div>
+                </div>
             </div>
             <div class="hospital-card-container">
                 <?php
@@ -57,7 +70,6 @@ session_start();
                                 </div>
                                 <p class="hid">'.$row['id'].'</p>
                             </div>';
-                        
                         // echo $row['id']."<br>";
                         // echo $row['name']."<br>";
                         // echo $row['description']."<br>";
@@ -66,36 +78,26 @@ session_start();
                     }
                 ?>  
             </div>
-            
             <div class="hospital-form-container hide">
-                <div class="blur"></div>
                 <div class="hospital-form">
                     <button onclick="closehospitalform()" class="closeHform">close</button>
                     <form action="uploadhospitalimgs.php" method="post" enctype="multipart/form-data">
                         <div>
                             <label for="hospitalname">Hospital Name :</label>
-                            <input type="text" name="hospitalname" >
+                            <input type="text" name="hospitalname"  required>
                         </div>
                         <div>
                             <label for="hospitaldescription">About Hospital :</label>
                             <!-- <input type="textbox" name="hospitaldescription"> -->
-                            <textarea name="hospitaldescription" id="" cols="30" rows="4" ></textarea>
+                            <textarea name="hospitaldescription" id="" cols="30" rows="4"  required></textarea>
                         </div>
                         <div>
                             <label for="hospitaladdress">Address :</label>
-                            <input type="text" name="hospitaladdress" >
+                            <input type="text" name="hospitaladdress"  required>
                         </div>
                         <div>
                             <label for="hospitalimage">Choose an image :</label>
-                            <input type="file" name="hospitalimage" accept="image/jpg,image/jpeg,image/png" >
-                        </div>
-                        <div>
-                            <label for="files[]">Upload other images :</label>
-                            <input type="file" name="hospitalimgs[]" accept="image/jpg,image/jpeg,image/png" multiple>
-                        </div>
-                        <div>
-                            <label for="pricelist">Upload the price list (pdf) :</label>
-                            <input type="file" name="pricelist" accept="application/pdf">
+                            <input type="file" name="hospitalimage" accept="image/jpg,image/jpeg,image/png"  required>
                         </div>
                         <input type="submit" name="upload" id="">
                     </form>
@@ -104,13 +106,12 @@ session_start();
             <div class="btn-container">
                 <button onclick="newhospital()" class="addhospital">Add</button>
                 <ul class="inner-btns">
-                    <li class="photo btn-selected"><span>Photo Gallery</span></li>
-                    <li class="price"><span>Price List</span></li>
-                    <li class="quote"><span>Instant Quote</span></li>
+                    <li class="photo btn-selected">Photo Gallery</li>
+                    <li class="price">Pricelist</li>
+                    <li class="quote">Instant Quote</li>
                 </ul>
                 <button onclick="prevpage()" class="backtohome">Back</button>
             </div>
-            
         </div>
     </div>
     <div class="reports outercontainer">
