@@ -12,9 +12,26 @@ const serviecescontainer = document.querySelector('.hospital-services-container'
 const innerservicecontainer = document.querySelectorAll('.inner-service-container');
 // let quotecards = document.querySelectorAll('.quote-card');
 let node;
-let hosid;
+var hosid;
 let totalcount = 0;
+
+
 //functions
+function photoformval(obj){
+    console.log(obj.parentElement.firstElementChild.value);
+    let files = obj.parentElement.firstElementChild.files;
+    for (var i = 0; i < files.length; i++){
+        console.log(files[i]);
+    }
+    
+}
+function priceformval(obj){
+    console.log(obj.parentElement.children[0].value);
+    console.log(obj.parentElement.children[1].value);
+    let str1 = obj.parentElement.children[0].value;
+    let str2 = obj.parentElement.children[1].value;
+    uploadnewservice(str1,str2);
+}
 function logoutnow(){
     location.href="logout.php";
 }
@@ -26,9 +43,7 @@ function test(){
 function prevpage(){
     if(serviecescontainer.classList.toString().includes('unhide')){
         hospitalcardcntr.style.display='flex';
-        containerbtns.forEach(btn=>{
-            btn.style.background = 'green';
-        })
+        addhospitalbtn.style.display='inline';
         document.querySelector('.btn-container > ul').style.display = 'none';
         serviecescontainer.classList.toggle('unhide');
     }
@@ -45,7 +60,13 @@ function newhospital(){
                     location.href = "uploadhospitalimgs.php";
                 }
                 if(cntr.classList.toString().includes('price')){
-                    console.log('price');
+                    document.querySelector('.price-form').style.display= 'none';
+                    document.querySelector('.btn-container').style.display='none';
+                    document.querySelector('.logout').style.display='none';
+                    window.print();
+                    document.querySelector('.btn-container').style.display='flex';
+                    document.querySelector('.logout').style.display='inline';
+                    document.querySelector('.price-form').style.display= 'inline';
                 }
                 if(cntr.classList.toString().includes('quote')){
                     console.log('quote');
@@ -71,27 +92,36 @@ function closehospitalform(){
         hospitalcardcntr.classList.toggle('hide');
         document.querySelector('.hospital-form-container').classList.toggle('hide');
 }
-function printpricelist(){
-    document.querySelector('.btn-container').style.display='none';
-    document.querySelector('.logout').style.display='none';
-    window.print();
-    document.querySelector('.btn-container').style.display='flex';
-    document.querySelector('.logout').style.display='inline';
-}
-
 //eventlisteners
 servicesbtn.forEach(element => {
     element.addEventListener('click',(ev)=>{
+        addhospitalbtn.style.display='none';
         hospitalcardcntr.style.display='none';
         document.querySelector('.btn-container > ul').style.display='flex';
         serviecescontainer.classList.toggle('unhide');
-        var str = ev.target.parentElement.lastElementChild.innerHTML;
-        showhospitalpics(str);
-        showhospitalpricelist(str);
-        showinstantquote(str);
+        hosid = ev.target.parentElement.lastElementChild.innerHTML;
+        showhospitalpics(hosid);
+        showhospitalpricelist(hosid);
+        showinstantquote(hosid);
     })
 });
-
+function uploadnewservice(str1,str2) {
+    if (str1.length == 0 || str2.length == 0) {
+        document.querySelector(".hospital-services-container > .photo").innerHTML = "";
+        return;
+    } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log('pricelist has been updated.');
+            }
+        };
+        xmlhttp.open("POST", "uploadnewservice.php?servicename=" + str1 + "&serviceprice="+str2, true);
+        xmlhttp.send();
+    }
+    showhospitalpricelist(hosid);
+    showinstantquote(hosid);
+}
 function showhospitalpics(str) {
     if (str.length == 0) {
         document.querySelector(".hospital-services-container > .photo").innerHTML = "";
@@ -143,17 +173,13 @@ innerbtns.forEach(btn=>{
             elem.classList.remove('btn-selected');
         })
         let selectedbtn = ev.target.classList.toString();
-        if(selectedbtn.includes('quote')){
-            addhospitalbtn.style.display='none';
-            document.querySelector('.print').style.display='none';
-        }
-        else if(selectedbtn.includes('price')){
-            document.querySelector('.print').style.display='inline';
+        if(selectedbtn.includes('price')){
             addhospitalbtn.style.display='inline';
+            addhospitalbtn.innerHTML='print';
         }
         else{
-            addhospitalbtn.style.display='inline';
-            document.querySelector('.print').style.display='none';
+            addhospitalbtn.style.display='none';
+            addhospitalbtn.innerHTML='add';
         }
         
         innerservicecontainer.forEach(service=>{

@@ -1,4 +1,5 @@
 <?php
+        session_start();
         require_once "configure.php";
         $hid = $_REQUEST['h'];
         $sql = "select servicename,price from pricelist where hospitalid = $hid";

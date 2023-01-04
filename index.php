@@ -23,7 +23,7 @@ session_start();
         </div>
         <div class="container-two">
         <div class="hospital-services-container">
-                <div class="photo inner-service-container unhide">
+                <div class="photo inner-service-container unhide moveup">
                     <?php
                         $sql = "select hospitalpics from hospitalimgs";
                         $stmt = mysqli_query($conn,$sql);
@@ -32,7 +32,7 @@ session_start();
                         }
                     ?>
                 </div>
-                <div class="price inner-service-container"></div>
+                <div class="price inner-service-container price-container"></div>
                 <div class="quote inner-service-container"></div>
             </div>
             <div class="hospital-card-container">
@@ -94,7 +94,6 @@ session_start();
                     <li class="quote">Instant Quote</li>
                 </ul>
                 <button onclick="prevpage()" class="backtohome">Back</button>
-                <button class="print" onclick="printpricelist()">print</button>
             </div>
         </div>
     </div>
