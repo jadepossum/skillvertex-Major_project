@@ -1,17 +1,9 @@
 <?php
 session_start();
+    // if(!isset($_SESSION['username'])){
+    //     header("location: login.php");
+    // }
     require_once "configure.php";
-    
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        // echo $_POST['hospitalname']."<br>";
-        // echo $_POST['hospitaldescription']."<br>";
-        // echo $_POST['hospitaladdress'];
-        // echo $_SERVER['PHP_SELF'];
-        if($_POST['hello']){
-            echo $_POST['hello'];
-        }
-    }
-    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +15,7 @@ session_start();
     <link rel="stylesheet" href="healthcarefirm.css">
 </head>
 <body>
+    <div class="logout" onclick="logoutnow()">logout</div>
     <div class="hospitals outercontainer">
         <div class="container-one">
             <a onclick="test()" href="#">Our Hospitals</a>
@@ -40,20 +33,7 @@ session_start();
                     ?>
                 </div>
                 <div class="price inner-service-container"></div>
-                <div class="quote inner-service-container">
-                    <div class="quote-card-container">
-                        <!-- <div class="quote-card">
-                            <input type="checkbox">
-                            <div class="service-name">service 1</div>
-                            <div class="service-price">500</div>
-                        </div>
-                        <div class="quote-card">
-                            <input type="checkbox">
-                            <div class="service-name">service 2</div>
-                            <div class="service-price">400</div>
-                        </div> -->
-                    </div>
-                </div>
+                <div class="quote inner-service-container"></div>
             </div>
             <div class="hospital-card-container">
                 <?php
@@ -76,12 +56,13 @@ session_start();
                         // echo $row['Address']."<br>";
                         //  echo   '<img width="300px" src="data:image;base64,'.base64_encode($row['image']).'" alt="">';
                     }
-                ?>  
+                ?>
+                
             </div>
             <div class="hospital-form-container hide">
                 <div class="hospital-form">
                     <button onclick="closehospitalform()" class="closeHform">close</button>
-                    <form action="uploadhospitalimgs.php" method="post" enctype="multipart/form-data">
+                    <form action="uploadnewhospital.php" method="post" enctype="multipart/form-data">
                         <div>
                             <label for="hospitalname">Hospital Name :</label>
                             <input type="text" name="hospitalname"  required>
@@ -97,9 +78,11 @@ session_start();
                         </div>
                         <div>
                             <label for="hospitalimage">Choose an image :</label>
-                            <input type="file" name="hospitalimage" accept="image/jpg,image/jpeg,image/png"  required>
+                            <input  type="file" name="hospitalimage" accept="image/jpg,image/jpeg,image/png"  required>
                         </div>
-                        <input type="submit" name="upload" id="">
+                        <div>
+                            <input class="hospital-submit" type="submit" name="upload" id="">
+                        </div>
                     </form>
                 </div>
             </div>
@@ -111,15 +94,15 @@ session_start();
                     <li class="quote">Instant Quote</li>
                 </ul>
                 <button onclick="prevpage()" class="backtohome">Back</button>
+                <button class="print" onclick="printpricelist()">print</button>
             </div>
         </div>
     </div>
     <div class="reports outercontainer">
         <div class="container-one">
-            <a onclick="test()" href="#">Reports & Assessments</a>
+            <a href="#">Reports & Assessments</a>
             <img src="./img/reports.png" width="400px" alt="not found">
         </div>
-        
     </div>
     <script src="./healthcarefirm.js"></script>
 </body>

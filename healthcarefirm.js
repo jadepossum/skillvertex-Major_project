@@ -15,6 +15,9 @@ let node;
 let hosid;
 let totalcount = 0;
 //functions
+function logoutnow(){
+    location.href="logout.php";
+}
 function test(){
     hospitalcntr.classList.toggle('enlargedcard');
     // servicesbtn = document.querySelectorAll('.hospital-services-btn');
@@ -35,10 +38,21 @@ function prevpage(){
 }
 function newhospital(){
     if(serviecescontainer.classList.toString().includes('unhide')){
-        containerbtns.forEach(btn=>{
-            btn.style.background = 'lightblue';
+        innerservicecontainer.forEach(cntr=>{
+            if(cntr.classList.toString().includes('unhide')){
+                if(cntr.classList.toString().includes('photo')){
+                    console.log('photo');
+                    location.href = "uploadhospitalimgs.php";
+                }
+                if(cntr.classList.toString().includes('price')){
+                    console.log('price');
+                }
+                if(cntr.classList.toString().includes('quote')){
+                    console.log('quote');
+                    
+                }
+            }
         })
-        hospitalcardcntr.style.display='none';
     }
     else{
         backtohomebtn.classList.toggle('hide');
@@ -57,15 +71,18 @@ function closehospitalform(){
         hospitalcardcntr.classList.toggle('hide');
         document.querySelector('.hospital-form-container').classList.toggle('hide');
 }
+function printpricelist(){
+    document.querySelector('.btn-container').style.display='none';
+    document.querySelector('.logout').style.display='none';
+    window.print();
+    document.querySelector('.btn-container').style.display='flex';
+    document.querySelector('.logout').style.display='inline';
+}
 
 //eventlisteners
-
 servicesbtn.forEach(element => {
     element.addEventListener('click',(ev)=>{
         hospitalcardcntr.style.display='none';
-        containerbtns.forEach(btn=>{
-            btn.style.background = 'lightcoral';
-        });
         document.querySelector('.btn-container > ul').style.display='flex';
         serviecescontainer.classList.toggle('unhide');
         var str = ev.target.parentElement.lastElementChild.innerHTML;
@@ -126,19 +143,31 @@ innerbtns.forEach(btn=>{
             elem.classList.remove('btn-selected');
         })
         let selectedbtn = ev.target.classList.toString();
+        if(selectedbtn.includes('quote')){
+            addhospitalbtn.style.display='none';
+            document.querySelector('.print').style.display='none';
+        }
+        else if(selectedbtn.includes('price')){
+            document.querySelector('.print').style.display='inline';
+            addhospitalbtn.style.display='inline';
+        }
+        else{
+            addhospitalbtn.style.display='inline';
+            document.querySelector('.print').style.display='none';
+        }
+        
         innerservicecontainer.forEach(service=>{
             let selectedservice = service.classList.toString();
             if(selectedservice.includes(selectedbtn)){
                 ev.target.classList.add('btn-selected');
-                if(selectedservice.includes('unhide')){
-                    console.log(service.classList.toString());
-                }
-                else{
+                if(!selectedservice.includes('unhide')){
                     service.classList.add('unhide');
                 }
+                service.classList.add('moveup');
             }
             else{
                 service.classList.remove('unhide');
+                service.classList.remove('moveup');
             }
         })
     })
