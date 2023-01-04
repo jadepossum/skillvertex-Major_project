@@ -12,6 +12,6 @@
                     </form>
                 </div>';
         while($row = mysqli_fetch_assoc($stmt)){
-            echo '<img class="hospitalpics" width="200px" alt="image not found" src="data:image;base64,'.base64_encode($row['hospitalpics']).'" >';
+            echo '<img class="hospitalpics" width="370px" alt="image not found" src="data:image;base64,'.base64_encode($row['hospitalpics']).'" >';
         }
     ?>

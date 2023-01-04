@@ -4,23 +4,19 @@ if(isset($_SESSION['username'])){
   header("location: index.php");
   exit;
 }
-echo "sdfsdkf";
 require_once "configure.php";
   $username=$password=$err="";
   if($_SERVER['REQUEST_METHOD'] ==  "POST"){
-    echo "insere";
     if(empty(trim($_POST['username']))||empty(trim($_POST['password']))){
       $err="check your username or password";
     }
     if(empty($err)){
       $username=trim($_POST['username']);
       $password=trim($_POST['password']);
-      echo "insere2323";
       //preparing sql query
       $sql="SELECT id,username,password from users WHERE username = ?";
       $stmt=mysqli_prepare($conn,$sql);
       if($stmt){
-        echo "stmtttttt";
 
         //binding parameters
         mysqli_stmt_bind_param($stmt,"s",$param_user);
@@ -50,56 +46,85 @@ require_once "configure.php";
       mysqli_close($conn);
     }
   }
-
 ?>
-
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
-    <title>Hello, world!</title>
-    <style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
         *{
             margin:0;
             padding:0;
+            font-family: sans-serif;
+            box-sizing:border-box;
+        }
+        h1{
+          font-size:3rem;
+          font-weight:600;
         }
         body{
             background-color:lightcoral;
             width:100vw;
             height:100vh;
             display:flex;
+            flex-direction:column;
+            gap :2rem;
             align-items:center;
             justify-content:center;
+        }
+        .form1{
+          padding:2rem;
+          background-color:lightblue;
+          font-weight:600;
+          font-size :1.3rem;
+        }
+        .form1 form{
+          display:flex;
+          flex-direction:column;
+          gap:.5rem;
+        }
+        .form1 input{
+          padding: .5rem 1rem;
+          border-radius:1.5rem;
+          border : 3px solid black;
+        }
+        .form-group{
+          display:flex;
+          justify-content:center;
+        }
+        .form-group > input{
+          margin-left:2rem;
+        }
+        .submit-grp{
+          justify-content:flex-end;
         }
     </style>
   </head>
   <body>
+  <h1>Login page</h1>
     <div class="form1">
         <form action="?" method="post">
             <div class="form-group">
-                <label for="exampleInputEmail1">Uername</label>
+                <label for="exampleInputEmail1">Uername :</label>
                 <input type="test" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
+                <label for="exampleInputPassword1">Password :</label>
                 <input type="password" name="password" class="form-control" id="exampleInputPassword1">
             </div>
-            <input type="submit" value="submit">
+            <div class="form-group submit-grp" style="margin-top:.5rem;">
+              <input onclick="regpage()" type="button" value="new user, sign up?">
+              <input type="submit" value="Login">
+            </div>
         </form>
     </div>
-    <!-- <div class="form2">
-        <form action="" method="post">
-            <div class="form-group">
-                <label for="username">Uername</label>
-                <input type="test" name="username" class="form-control" id="inputemail" aria-describedby="emailHelp">
-                <small id="emailHelp" class="form-text text-muted">
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" name="password" class="form-control" id="inputpassword">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    </div> -->
-    
+    <script>
+      function regpage(){
+        location.href= "signup.php";
+      }
+    </script>
   </body>
 </html>

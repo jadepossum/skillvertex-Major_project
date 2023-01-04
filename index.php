@@ -1,8 +1,8 @@
 <?php
 session_start();
-    // if(!isset($_SESSION['username'])){
-    //     header("location: login.php");
-    // }
+    if(!isset($_SESSION['username'])){
+        header("location: login.php");
+    }
     require_once "configure.php";
 ?>
 <!DOCTYPE html>
@@ -50,11 +50,7 @@ session_start();
                                 </div>
                                 <p class="hid">'.$row['id'].'</p>
                             </div>';
-                        // echo $row['id']."<br>";
-                        // echo $row['name']."<br>";
-                        // echo $row['description']."<br>";
-                        // echo $row['Address']."<br>";
-                        //  echo   '<img width="300px" src="data:image;base64,'.base64_encode($row['image']).'" alt="">';
+                        
                     }
                 ?>
                 
@@ -99,7 +95,7 @@ session_start();
     </div>
     <div class="reports outercontainer">
         <div class="container-one">
-            <a href="#">Reports & Assessments</a>
+            <a href="reports.html" target="_blank">Reports & Assessments</a>
             <img src="./img/reports.png" width="400px" alt="not found">
         </div>
     </div>
