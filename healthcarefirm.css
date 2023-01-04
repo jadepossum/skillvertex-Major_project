@@ -290,7 +290,7 @@ body{
     border-radius: 35px;
     width: min(90%, 900px);
     height: 400px;
-    background-color: lightgoldenrodyellow;
+    background-color: rgb(255, 255, 240);
     font-size: 1rem;
     overflow: hidden;
     position: relative;
@@ -304,29 +304,32 @@ body{
 .hdetails{
     flex:1;
     padding-inline:1rem;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
 }
 .hdetails > *{
     overflow: auto;
 }
 .hname{
     text-align: center;
-    height: 7.5rem;
-    padding:1rem;
-    font-size: 3.5rem;
+    padding:1rem .5rem;
+    font-size: 3rem;
     font-weight: 600;
-    color: rgb(95, 240, 192);
+    color: rgb(35, 74, 73);
 }
 .haddress{
     text-align: right;
     height: 1rem;
     overflow: auto;
+    font-weight: 600;
 }
 .hdescription{
-    padding:1rem .5rem;
+    flex-grow: 1;
+    padding:1rem;
     border-radius: 20px;
-    height: 230px;
     margin-top:1rem;
-    background-color: rgb(223, 223, 154);
+    background-color: rgb(206, 206, 172);
     text-align: left;
     font-weight: 600;
 }
@@ -339,13 +342,15 @@ body{
     left: 1rem;
     font-weight: 600;
     border: 0px;
+    color: white;
+    background-color: black;
     border-radius: 20px;
     padding:.5rem 1rem;
 }
 .hospital-services-btn:hover{
     cursor: pointer;
-    color: white;
-    background-color: black;
+    color: black;
+    background-color: white;
 }
 .hospital-form-container{
     width: 100%;
