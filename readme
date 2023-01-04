@@ -1,3 +1,6 @@
+please import the database by using the provided sql file (healthcarefirm)
+
+
 The site is proposed to be a dynamic website for a healthcare provider firm in which several hospitals
 are managed. This site will provide easy and instant information/quotes to the patients as per
 modules. Various functionalities like Assessments and reports about their healthcare, etc. would be
