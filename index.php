@@ -95,7 +95,7 @@ session_start();
     </div>
     <div class="reports outercontainer">
         <div class="container-one">
-            <a href="reports.html" target="_blank">Reports & Assessments</a>
+            <a href="reports.php" target="_blank">Reports & Assessments</a>
             <img src="./img/reports.png" width="400px" alt="not found">
         </div>
     </div>
